@@ -13,6 +13,9 @@
       <phar pharPath="C:\ProgramData\ComposerSetup\bin\composer.phar" interpreterId="904bd3c4-c655-4351-93c9-2e80bdf20059" />
     </execution>
   </component>
+  <component name="EditorConfigPreviewManager">
+    <editorConfig file="$PROJECT_DIR$/.editorconfig" previewFile="$PROJECT_DIR$/composer.json" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -205,7 +208,7 @@
       <workItem from="1602271340349" duration="6000" />
       <workItem from="1602318547712" duration="7655000" />
       <workItem from="1602346114280" duration="802000" />
-      <workItem from="1602407671641" duration="2613000" />
+      <workItem from="1602407671641" duration="4188000" />
     </task>
     <servers />
   </component>
