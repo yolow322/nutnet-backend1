@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Str;
 
-$DATABASE_URL = parse_url(getenv("postgres://hgnhxxvcrknfle:1ad3600951274bb8ca2032ca744bd10e1a13e61c2972eac57c52bdd8027d3839@ec2-18-235-97-230.compute-1.amazonaws.com:5432/dfbtk8gj1289ag"));
+$DATABASE_URL = parse_url(getenv("DATABASE_URL"));
 
 return [
 
