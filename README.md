@@ -21,5 +21,5 @@
     <li>RegistrationRequest - регистрирует правила и выводит сообщения об ошибках в представлении <code>registration/registration.blade.php</code></li>
     <li>MusicPlateRequest - регистрирует правила и выводит сообщения об ошибках в представлениях в директории <code>home/music_plate</code></li>
   </ul>
-  <li>В классе Handler.php добавил в метод render, который перенаправляет на представления в деректории <code>errors</code> в случае HttpException</li>
+  <li>В классе Handler.php добавил в метод render проверку, которая перенаправляет на соответсвующие представление в деректории <code>errors</code> по коду http, в случае HttpException</li>
 </ul>
