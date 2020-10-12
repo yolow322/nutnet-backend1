@@ -17,7 +17,7 @@ class LoginController extends Controller
      */
     public function userLogin(LoginRequest $request)
     {
-        if (!Auth::attempt($request->only(['login', 'password']), $request->has('remember')) && !Hash::check(User::where('password', '=' , $request->getPassword())->first(), $request->getPassword())) {
+        if (!Auth::attempt($request->only(['login', 'password']), $request->has('remember'))) {
             return redirect()->back()->withErrors([
                 'massage' => 'Неверный логин или пароль'
             ]);
