@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class MusicPlateRequest extends FormRequest
 {
@@ -24,11 +25,18 @@ class MusicPlateRequest extends FormRequest
     public function rules()
     {
         return [
-            'music_author' => 'required|max:100',
+            'music_author' => [
+                'required',
+                'max:100',
+                Rule::unique('music_plates')->where(function ($query) {
+                    $query->where('music_author', $this->music_author)
+                        ->where('album_name', $this->album_name);
+                })
+            ],
             'album_name' => 'required|max:100',
             'genre_of_music' => 'required|max:100',
             'record_label' => 'required|max:50',
-            'date_of_creation_album' => 'required|date'
+            'date_of_creation_album' => 'required|date',
         ];
     }
 
@@ -48,6 +56,7 @@ class MusicPlateRequest extends FormRequest
             'record_label.max' => 'Поле лейбл может содержать макс. 50 символов',
             'date_of_creation_album.required' => 'Поле дата записи должно быть обязательным',
             'date_of_creation_album.date' => 'Поле дата записи должно быть в формате даты',
+            'music_author.unique' => 'Данная пластинка с автором "' . $this->music_author . '" и альбомом "' . $this->album_name .'" уже есть в БД'
         ];
     }
 }

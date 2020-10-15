@@ -33,15 +33,22 @@ Route::get('/home/logout', [LoginController::class, 'userLogout'])
 Route::get('/home', [MusicPlateController::class, 'showMusicPlates'])
     ->name('show-music-plates')->middleware('auth');
 
-Route::get('/home/music-plate', function () {
-    return view('home.music_plate.create_new_music_plate');
-})->name('music-plate')->middleware('auth');
+Route::group(['prefix' => '/home'], function () {
+    Route::get('/music-plate/create', function () {
+        return view('home.music_plate.create_new_music_plate');
+    })->name('create-music-plate')->middleware('auth');
 
-Route::post('/home/music-plate', [MusicPlateController::class, 'createMusicPlate'])
-    ->name('create-music-plate')->middleware('auth');
+    Route::post('/music-plate/create', [MusicPlateController::class, 'createMusicPlate'])
+        ->name('create-music-plate-submit')->middleware('auth');
 
-Route::get('/home/music-plate/{id}/delete', [MusicPlateController::class, 'deleteMusicPlateById'])
-    ->name('delete-music-plate')->middleware('auth');
+    Route::get('/music-plate/{id}/delete', [MusicPlateController::class, 'deleteMusicPlate'])
+        ->name('delete-music-plate')->middleware('auth');
 
-Route::patch('/home/music-plate/{id}/update', [MusicPlateController::class, 'changeMusicPlate'])
-    ->name('change-music-plate')->middleware('auth');
+    Route::get('/music-plate/{id}/update', [MusicPlateController::class, 'showUpdateForm'])
+        ->name('update-music-plate')->middleware('auth');
+
+    Route::patch('/music-plate/{id}/update', [MusicPlateController::class, 'updateMusicPlate'])
+        ->name('update-music-plate-submit')->middleware('auth');
+});
+
+
